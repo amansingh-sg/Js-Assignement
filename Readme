@@ -1,0 +1,5 @@
+# Product Manager
+
+A simple Product Management web application built using **HTML, CSS, and JavaScript**. The application fetches products from the DummyJSON API and provides complete CRUD (Create, Read, Update, Delete) functionality with Local Storage support.
+
+
