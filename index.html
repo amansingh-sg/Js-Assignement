@@ -2,54 +2,44 @@
 <html lang="en">
 
 <head>
+    <!-- Meta Information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Product Manager</title>
 
-    <!-- Inter Font -->
+    <!-- Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
+    <!-- Font Awesome Icons -->
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <h1>Product Manager</h1>
+    </header>
 
-   <header class="header">
-
-    <h1>Product Manager</h1>
-<div class="tech-badge">
-            JSON + LocalStorage + JavaScript
-        </div>
-    <button id="clearCacheBtn" class="clear-cache-btn">
-        <i class="fa-solid fa-trash"></i>
-        Clear Cache
-    </button>
-
-</header>
-
-  
-
+    <!-- ================= MAIN CONTAINER ================= -->
     <main class="container">
 
-        
-
+        <!-- ============ SIDEBAR / PRODUCT FORM ============ -->
         <aside class="sidebar">
 
-            
-
+            <!-- Form Mode Tabs -->
             <div class="tabs">
-
                 <button class="tab-btn active" id="addTab">
                     Add Product
                 </button>
@@ -57,75 +47,67 @@
                 <button class="tab-btn" id="updateTab">
                     Update Product
                 </button>
-
             </div>
 
-           
-
+            <!-- Product Form -->
             <div class="form-area">
 
+                <!-- Dynamic Form Heading -->
                 <h2 id="formHeading">
                     ADD NEW PRODUCT
                 </h2>
 
-              
-
+                <!-- Product Title -->
                 <div class="form-group">
-    <label for="title">TITLE</label>
+                    <label for="title">TITLE</label>
 
-    <input type="text" id="title" placeholder="e.g. iPhone 15">
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="e.g. iPhone 15">
 
-    <select id="titleDropdown" style="display:none;"></select>
-</div>
+                    <!-- Dropdown shown only in Update Mode -->
+                    <select
+                        id="titleDropdown"
+                        style="display:none;">
+                    </select>
+                </div>
 
-                <!-- Price -->
-
+                <!-- Product Price -->
                 <div class="form-group">
-
-                    <label for="price" id="Price">
-                        PRICE
-                    </label>
+                    <label for="price">PRICE</label>
 
                     <input
                         type="number"
                         id="price"
                         placeholder="e.g. 99.99">
-
                 </div>
 
-                <!-- Stock -->
-
+                <!-- Product Stock -->
                 <div class="form-group">
-
-                    <label for="stock" id="Stock">
-                        STOCK
-                    </label>
+                    <label for="stock">STOCK</label>
 
                     <input
                         type="number"
                         id="stock"
                         placeholder="e.g. 10">
-
                 </div>
 
-                <!-- SKU -->
-
+                <!-- Product SKU -->
                 <div class="form-group">
-
-                    <label for="sku" id="Sku">
-                        SKU
-                    </label>
+                    <label for="sku">SKU</label>
 
                     <input
                         type="text"
                         id="sku"
                         placeholder="e.g. APL-001">
-
                 </div>
 
-                <!-- Button -->
-
-                <button class="submit-btn" id="submitBtn" type="button">
+                <!-- Add / Update Button -->
+                <button
+                    class="submit-btn"
+                    id="submitBtn"
+                    type="button">
 
                     Add Product
 
@@ -135,61 +117,90 @@
 
         </aside>
 
-
+        <!-- ============ MAIN CONTENT ============ -->
         <section class="content">
 
+            <!-- Content Header -->
             <div class="content-header">
 
-                <div>
-
+                <!-- Title -->
+                <div class="header-info">
                     <h2>Product List</h2>
+                    <p>Manage your inventory below</p>
+                </div>
 
-                    <p>
-                        Manage your inventory below
-                    </p>
+                <!-- Item Count & Clear Cache -->
+                <div class="header-actions">
+
+                    <span
+                        class="item-count"
+                        id="itemCount">
+                        0
+                    </span>
+
+                    <button
+                        id="clearCacheBtn"
+                        class="clear-cache-btn">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Clear Cache
+
+                    </button>
 
                 </div>
 
-                <span class="item-count" id="itemCount">
-                    0
-                </span>
+            </div>
+
+            <!-- ============ PRODUCT TABLE ============ -->
+            <div class="table-container">
+
+                <table>
+
+                    <!-- Table Header -->
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TITLE</th>
+                            <th>PRICE</th>
+                            <th>STOCK</th>
+                            <th>SKU</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Dynamic Product Rows -->
+                    <tbody id="productBody">
+
+                    </tbody>
+
+                </table>
 
             </div>
 
-            <div class="table-container">
+            <!-- ============ EMPTY STATE ============ -->
+            <div
+                id="emptyState"
+                class="empty-state"
+                style="display:none;">
 
-    <table>
+                <i class="fa-solid fa-box-open"></i>
 
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>TITLE</th>
-                <th>PRICE</th>
-                <th>STOCK</th>
-                <th>SKU</th>
-                <th>ACTIONS</th>
-                
-            </tr>
-        </thead>
+                <h3>No Products Available</h3>
 
-        <tbody id="productBody">
+                <p>
+                    Reload the page to fetch products again.
+                </p>
 
-            
-
-        </tbody>
-
-    </table>
-<div class="fetch-container">
-    <button id="fetchBtn" class="fetch-btn" style="display: none;">
-        Fetch Products
-    </button>
-</div>
-</div>
+            </div>
 
         </section>
 
     </main>
-<script src="script.js"></script>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
 </body>
 
 </html>
